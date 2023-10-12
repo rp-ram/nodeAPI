@@ -8,6 +8,11 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended : false}))
 
+app.get("/" , async(req,res) => {
+    console.log("Node API")
+    res.status(201).json({message: "this is done with help of Node API"});
+})
+
 app.post('/matrix', async (req, res) => {
     try {
       const { matrix } = req.body;
