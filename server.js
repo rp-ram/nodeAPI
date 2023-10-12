@@ -13,6 +13,10 @@ app.get("/" , async(req,res) => {
     res.status(201).json({message: "this is done with help of Node API"});
 })
 
+app.get('/home', async(req,res) => {
+    res.status(201).json({message:"helloWorld"});
+})
+
 app.post('/matrix', async (req, res) => {
     try {
       const { matrix } = req.body;
