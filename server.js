@@ -57,6 +57,7 @@ app.put("/changeMatrix/:id", async (req, res) => {
 
 app.get("/allMatrix" , async (req,res) => {
     try {
+        console.log("In allmatrix function");
         const allMatrix = await Product.find({});
 
         if(!allMatrix)
