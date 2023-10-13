@@ -72,7 +72,7 @@ app.get("/allMatrix" , async (req,res) => {
     }
 })
   
-app.get("/matrixElement/:id", async (req, res) => {
+app.get("/changeMatrixElement/:id", async (req, res) => {
     const { id } = req.params;
     const { row, col } = req.body;
 
