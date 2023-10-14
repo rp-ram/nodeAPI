@@ -1,3 +1,7 @@
+let headers = new Headers();
+headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+headers.append('Access-Control-Allow-Credentials', 'true');
+
 const cors = require("cors")
 require("dotenv").config()
 
