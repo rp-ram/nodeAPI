@@ -1,6 +1,6 @@
 let headers = new Headers();
 headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-headers.append('Access-Control-Allow-Credentials', 'true');
+headers.append('Access-Control-Allow-Credentials', 'true');
 
 const cors = require("cors")
 require("dotenv").config()
@@ -60,6 +60,28 @@ app.put("/changeMatrixElement/:id", async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+app.delete('/delete', async(req,res) => {
+    try {
+        const { id } = req.body;
+
+        if(!id){
+            await Product.deleteMany({});
+            res.json({ message: "All matrices deleted successfully" });
+        } else {
+            const matrix = await Product.findById(id);
+
+            if (!matrix) {
+                return res.status(404).json({ message: "Matrix not found" });
+            }
+            await matrix.remove();
+        }
+
+    } catch (error) {
+        console.error("error");
+        res.status(500).json({message: "Server Error"})
+    }
+})
 
 app.get("/allMatrix" , async (req,res) => {
     try {
