@@ -30,7 +30,7 @@ app.post('/matrix', async (req, res) => {
     }
 });
 
-app.put("/changeMatrix/:id", async (req, res) => {
+app.put("/changeMatrixElement/:id", async (req, res) => {
     const { id } = req.params;
     const { value, row, col } = req.body;
 
@@ -72,7 +72,7 @@ app.get("/allMatrix" , async (req,res) => {
     }
 })
   
-app.get("/changeMatrixElement/:id", async (req, res) => {
+app.get("/getMatrixElement/:id", async (req, res) => {
     const { id } = req.params;
     const { row, col } = req.body;
 
@@ -103,6 +103,6 @@ mongoose.connect(process.env.MONGO_DB)
     console.log(error.message)
 })
 
-app.listen(3000, (() => {
+app.listen(5000, (() => {
     console.log("hello")
 }))
