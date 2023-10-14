@@ -16,7 +16,13 @@ app.use(express.urlencoded({extended : false}))
 
 app.get("/" , async(req,res) => {
     console.log("Node API")
-    res.status(201).json({message: "this is done with help of Node API"});
+    msg = `**GET** / - A simple root endpoint that responds with a message.
+    **POST** /matrix - Create a new adjacency matrix. Expects a JSON object with a name and matrix in the request body. It saves the matrix and returns the saved matrix.
+    **PUT** /changeMatrixElement/:id - Update a specific element in an adjacency matrix. The id in the URL parameter specifies the matrix to update, and the request body should include the value, row, and col of the element to change. It updates the matrix and responds with a success message.
+    **DELETE** /delete - Delete one or all adjacency matrices. If no id is provided in the request body, it deletes all matrices. If an id is provided, it deletes the specific matrix with that ID.
+    **GET** /allMatrix - Retrieve all adjacency matrices stored in the database and respond with a JSON array of matrices.
+    **GET** /getMatrixElement/:id - Retrieve a specific element from an adjacency matrix. The id in the URL parameter specifies the matrix, and the request body should include row and col to specify the element. It responds with the element's value.`
+    res.status(201).json({message: msg});
 })
 
 app.get('/home', async(req,res) => {
