@@ -62,9 +62,8 @@ app.put("/changeMatrixElement/:id", async (req, res) => {
 });
 
 app.delete('/delete', async(req,res) => {
-    try {
-        const { id } = req.body;
-
+    const { id } = req.body;
+    try{
         if(!id){
             await Product.deleteMany({});
             res.json({ message: "All matrices deleted successfully" });
@@ -74,12 +73,12 @@ app.delete('/delete', async(req,res) => {
             if (!matrix) {
                 return res.status(404).json({ message: "Matrix not found" });
             }
-            await matrix.remove();
+            await matrix.deleteOne();
+            res.status(200).json({message: "deleted the matix"})
         }
-
-    } catch (error) {
+    } catch(error){
         console.error("error");
-        res.status(500).json({message: "Server Error"})
+        res.status(500).json({message: "Server Error"});
     }
 })
 
