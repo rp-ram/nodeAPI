@@ -25,9 +25,9 @@ app.get('/home', async(req,res) => {
 
 app.post('/matrix', async (req, res) => {
     try {
-      const { matrix } = req.body;
+      const {name,matrix } = req.body;
       const newMatrix = new Product({
-        matrix
+        name,matrix
       });
       const savedMatrix = await newMatrix.save();
       res.status(201).json(savedMatrix);
